@@ -35,3 +35,17 @@ Because I'm working with Bootstrap, I should be able to customize them pretty qu
     --There is also a delete button; this will delete what was saved in the item-box.
 
 Next thing i want to work on is to see if i can make the text-boxes change color depending on the time of day?
+
+## Day Three
+
+I was able to get the schedule boxes to change color! The part that was messing me up was the fact that i was trying to get the function to apply to multiple items with the SAME ID... but ID's are only for one HTML element! Switching it to a class made it way easier.
+
+Like with the Real-Time-Clock;
+
+    --I needed to parse the data value i assigned to each schedule block (9 through 17 respectively for military time), then ran it through an if/then function; comparing it to my real-time miltary clock hour tracker.
+
+Interestingly,doing so over-wrote my other class styles...
+
+Next, I'll tackle the localStorage issue.
+
+Local storage is halfway done, but Ive hit a snag. No matter which button i push, or which input box i fill in, it only takes the value from the first box, and then applies it to all the values in storage!
