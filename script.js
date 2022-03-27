@@ -37,16 +37,12 @@ function findHour() {
 calendarDate(); //This keeps track of the calendar date
 hourTracker(); //this keeps track of my current hour, every second
 
-//console.log(everyHour())
 console.log(findHour())
 //---------------------------------------------------------------------------------------------------
 
 function setColor() {
     
     timeBlock.each(function( index ) {
-    
-        //console.log( index + ": " + $(this).data("hour"));
-    
     
         var scheduHour = $(this).data("hour");
         var parsed = parseInt(scheduHour); 

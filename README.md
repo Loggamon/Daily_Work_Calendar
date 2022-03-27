@@ -49,3 +49,18 @@ Interestingly,doing so over-wrote my other class styles...
 Next, I'll tackle the localStorage issue.
 
 Local storage is halfway done, but Ive hit a snag. No matter which button i push, or which input box i fill in, it only takes the value from the first box, and then applies it to all the values in storage!
+
+
+## Things I like/Don't Like
+
+The webpage is completely function now! Reflecting back on my process;
+
+### Things I liked:
+    --Moment.js is a really useful library to have, and it's use is very wide!
+    --Bootstrap makes it very easy to slap a mockup HTML page, so I have a baseboard to work from for the js!
+    --each() functions are going to be a livesaver in the future, as it allows me to affect multiple items of the same class in the HTML!
+
+### Things I Need to Work On:
+    --My codes easily got out of hand on this project, as I was overthinking the prerequisites for the grade. Gotta keep it DRY.
+    --Obviously, something happened in the CSS that caused my layout to be funky in widescreen mode. Definitely will fix that in the future for re-submission.
+    
