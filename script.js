@@ -40,32 +40,72 @@ hourTracker(); //this keeps track of my current hour, every second
 //console.log(everyHour())
 console.log(findHour())
 //---------------------------------------------------------------------------------------------------
+
 function setColor() {
-    var scheduHour = timeBlock.data("hour");
-    var parsed = parseInt(scheduHour); 
     
-    console.log(parsed);
-    console.log(today.format("H"));
-    if (parsed > today.format("H")) {
-        timeBlock.attr('class', "future");
-    } else if (parsed === today.format("H")) {
-        timeBlock.attr('class', "present");
-    } else {
-        timeBlock.attr('class', "past");
-    }
+    timeBlock.each(function( index ) {
+    
+        //console.log( index + ": " + $(this).data("hour"));
+    
+    
+        var scheduHour = $(this).data("hour");
+        var parsed = parseInt(scheduHour); 
+    
+        //console.log(scheduHour);
+        //console.log(findHour());
+        //console.log(parsed);
+
+        if (parsed > today.format("H")) {
+            $(this).attr('class', "future");
+            //console.log("future");
+        } else if (parsed == today.format("H")) {
+            $(this).attr('class', "present");
+            //console.log("present");
+        } else {
+            $(this).attr('class', "past");
+            //console.log("past");
+        }
+    })
 }
 
 setColor();
 //---------------------------------------------------------------------------------------------------
 
-function saveValue(event) {
-    var scheduHour = event.target.id;
-    scheduInput = timeBlock.val();
-
-    console.log(scheduInput);
-    localStorage.setItem(scheduHour, JSON.stringify(scheduInput));
+function displayValue() {
     
+    timeBlock.each(function( index ) {
+        //event.stopPropagation();
+        scheduInput = JSON.parse(localStorage.getItem($(this).data("hour"))); 
+        //console.log($(this).val());
+        console.log(scheduInput);
+        
+        $(this).val(scheduInput);
+            
+    })
+}
+
+function saveValue(event) {
+    //event.stopPropagation();
+    var scheduHour = event.target.id;
+        
+    //timeBlock.val("")
+    timeBlock.each(function( index ) {
+        event.stopPropagation();
+        scheduInput = $(this).val();
+        console.log($(this).data("hour"));
+
+        if ($(this).data("hour") == scheduHour) {
+        localStorage.setItem(scheduHour, JSON.stringify(scheduInput));
+        console.log(scheduHour, scheduInput);
+        } else {
+            return;
+        }
+        $(this).val("");
+    })
+    //console.log(scheduInput);
+    
+    displayValue();
 }
 saveBtn.on("click", saveValue);
 
-
+window.onload = displayValue;
